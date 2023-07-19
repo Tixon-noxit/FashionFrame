@@ -1,0 +1,52 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block content %}
+    <!-- /.vlt-navigation-fullscreen-holder -->
+				<div class="vlt-hero-title-holder jarallax" style="background-image: url('{{ backgroung_photo.miniature.url }}');">
+					<div class="vlt-hero-title-inner">
+						<h1 class="vlt-hero-title">Прайс-лист</h1>
+						<p class="vlt-hero-subtitle">Виды съемок и их расценки</p>
+					</div>
+				</div>
+<!-- /.vlt-hero-title-holder -->
+				<main class="vlt-main-holder">
+					<section class="vlt-main-padding" style="background-color: #f5f5f5;">
+						<div class="container">
+							<!-- /.vlt-custom-title-holder center -->
+							<div class="row">
+                                {% for p in price %}
+								<div class="col-md-4">
+									<div class="vlt-pricing-table">
+										<div class="vlt-price-header">
+											<h3 class="vlt-price-name">{{ p.title }}</h3>
+											<!-- <div class="vlt-price-price">от 5 000 ₽</div> -->
+										</div>
+										<div class="vlt-price-features">
+                                            {% autoescape off %}
+											{{ p.description }}
+                                            {% endautoescape %}
+										</div>
+										<div class="vlt-price-footer"><a href="{% url 'main:contact:contact' %}" target="_self" class="vlt-btn vlt-btn-primary"><span>Связаться со мной</span></a></div>
+									</div>
+									<!-- /.vlt-pricing-table -->
+								</div>
+                                {% endfor %}
+							</div>
+						</div>
+					</section>
+					<section class="vlt-main-padding" style="background-color: #f5f5f5;">
+						<div class="container">
+							<!-- /.vlt-custom-title-holder center -->
+                            {% for c in comment %}
+							<div class="vlt-alert">
+                                {% autoescape off %}
+								{{ c.description }}
+                                {% endautoescape %}
+							</div>
+                            {% endfor %}
+						</div>
+					</section>
+
+                </main>
+
+{% endblock %}

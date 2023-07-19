@@ -1,0 +1,164 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block content %}
+		<div class="vlt-hero-title-holder jarallax" style="background-image: url('{{ backgroung_photo.miniature.url }}');">
+			<div class="vlt-hero-title-inner">
+				<h1 class="vlt-hero-title">Бриф на фотосъемку</h1>
+				<p class="vlt-hero-subtitle">Рассчитайте стоимость бюджета на съемку.</p>
+			</div>
+		</div>
+
+
+<main class="vlt-main-holder">
+
+
+<section class="vlt-main-padding">
+
+						<div class="container">
+                            Для того, чтобы рассчитать стоимость бюджета
+                            на съемку, вы можете заполнить форму с основными вопросами. Далее мой помощник
+                            свяжется с вами и предложит разные варианты бюджета.
+                            Просим сообщить в комментариях, требуется ли:
+                            <li>примерка одежды на модели или достаточно онлайн кастинга и сколько планируется моделей;</li>
+                            <li>примерное задание для стилиста;</li>
+                            <li>на какой период вам необходим визажист (только мейк, либо присутствие на всей съемке?)</li>
+                            <li>пожелания по локации;</li>
+                            <li>пожелания по дате съемке;</li>
+                            <li>требования к сдачи материала;</li>
+                            <li><u>прикрепите ссылку на сайт или название бренда</u>, для просмотра технических особенностей размещения фотографий.</li>
+						</div>
+					</section>
+                    <section class="vlt-main-padding">
+						<div class="container">
+							<div class="row">
+								<div class="col-md-6">
+{#									<div class="container">#}
+
+{#                            <div class="col-md-5">#}
+								<form class="vlt-contact-form" id="reused_form" method="post">
+                                    {% csrf_token %}
+									<div class="vlt-form-group">
+										<label>Имя</label>
+										<input type="text" class="form-control" name="your-name" value size="40" required>
+									</div>
+									<div class="vlt-form-group">
+										<label>Email</label>
+										<input type="email" class="form-control" name="your-email" value size="40" required>
+									</div>
+
+                                    <div class="vlt-form-group">
+										<label>Телефон</label>
+										<input type="tel" id="phone" pattern="^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,12}(\s*)?$"  class="form-control" name="your-telephone" value size="40" required>
+									</div>
+                                    <div class="vlt-form-group">
+										<label>Вид съемки</label>
+                                        <select name="select">
+                                            <option selected disabled> </option>
+                                            <option value="value1">Look Book</option> <!-- selected -->
+                                            <option value="value2" >Что-то еще</option>
+                                            <option value="value3">Что-то другое</option>
+                                            <option value="value4"> </option>
+                                        </select>
+{#										<input type="text" class="form-control" name="your-name" value size="40" required>#}
+									</div>
+                                    <div class="vlt-form-group">
+										<label>Количество образцов</label>
+										<input type="text" class="form-control" name="your-name" value size="40" required>
+									</div>
+                                    <div class="vlt-form-group">
+										<label>Количество съемочных дней и предполагаемые даты</label>
+										<input type="text" class="form-control" name="your-name" value size="40" required>
+									</div>
+                                    <div class="vlt-form-group">
+										<label>Локация</label>
+                                        <select name="select">
+                                            <option selected disabled> </option>
+                                            <option value="value1">Организация съемки в студии</option> <!-- selected -->
+                                            <option value="value2" >Организация съемки вне студии</option>
+                                            <option value="value3">Организация съемки не требуется</option>
+                                            <option value="value4"> </option>
+                                        </select>
+{#										<input type="text" class="form-control" name="your-name" value size="40" required>#}
+									</div>
+                                    <div class="vlt-form-group">
+										<label>Где будут использованы фотографии</label>
+										<input type="text" class="form-control" name="your-name" value size="40" required>
+									</div>
+
+{#									<div class="vlt-form-group">#}
+{#										<label>Сообщение</label>#}
+{#										<textarea  class="form-control" cols="40" rows="4" maxlength="6000"></textarea>#}
+{#									</div>#}
+									<p><button class="vlt-btn vlt-btn-primary">Отправить</button></p>
+									<div id="success_message" style="display: none;">Спасибо за обращение!</div>
+									<div id="error_message" style="display: none;">Ошибка отправки сообщения!</div>
+								</form>
+{#							</div>#}
+{#                        </div>#}
+
+								</div>
+								<div class="col-md-6">
+									<form class="vlt-contact-form" id="reused_form" method="post">
+                                    {% csrf_token %}
+									<div class="vlt-form-group">
+										<label>Дополнительные комментарии</label>
+										<textarea  class="form-control" cols="40" rows="4" maxlength="6000"></textarea>
+									</div>
+
+                                        <p><input type="checkbox" name="option1" value="a1"> Потребуется подбор модели<br>
+                                        <input type="checkbox" name="option2" value="a2"> Потребуется стилист<br>
+                                        <input type="checkbox" name="option3" value="a3"> Потребуется визажист<br>
+                                        </p>
+
+
+
+
+									<div class="vlt-form-group">
+										<label>Количество и пол моделей</label>
+										<input type="email" class="form-control" name="your-email" value size="40" required>
+									</div>
+
+                                    <div class="vlt-form-group">
+										<label>Требования к моделям: типаж, параметры, возраст, цвет и длина волос</label>
+										<input type="tel" id="phone" pattern="^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,12}(\s*)?$"  class="form-control" name="your-telephone" value size="40" required>
+									</div>
+                                    <div class="vlt-form-group">
+										<label>Требования к стилисту</label>
+										<input type="text" class="form-control" name="your-name" value size="40" required>
+									</div>
+                                    <div class="vlt-form-group">
+										<label>Задание для визажиста</label>
+										<input type="text" class="form-control" name="your-name" value size="40" required>
+									</div>
+{#                                    <div class="vlt-form-group">#}
+{#										<label>Количество съемочных дней и предполагаемые даты</label>#}
+{#										<input type="text" class="form-control" name="your-name" value size="40" required>#}
+{#									</div>#}
+{#                                    <div class="vlt-form-group">#}
+{#										<label>Локация</label>#}
+{#										<input type="text" class="form-control" name="your-name" value size="40" required>#}
+{#									</div>#}
+{#                                    <div class="vlt-form-group">#}
+{#										<label>Где будут использованы фотографии</label>#}
+{#										<input type="text" class="form-control" name="your-name" value size="40" required>#}
+{#									</div>#}
+{##}
+{#									<div class="vlt-form-group">#}
+{#										<label>Сообщение</label>#}
+{#										<textarea  class="form-control" cols="40" rows="4" maxlength="6000"></textarea>#}
+{#									</div>#}
+{#									<p><button class="vlt-btn vlt-btn-primary">Отправить</button></p>#}
+{#									<div id="success_message" style="display: none;">Спасибо за обращение!</div>#}
+{#									<div id="error_message" style="display: none;">Ошибка отправки сообщения!</div>#}
+								</form>
+
+								</div>
+							</div>
+						</div>
+					</section>
+
+
+
+</main>
+
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block content %}
+
+     <!-- /.vlt-navigation-fullscreen-holder -->
+
+				<div class="vlt-hero-title-holder jarallax" style="background-image: url('{{ backgroung_photo.miniature.url }}');">
+                    {% if heading or subheading %}
+					<div class="vlt-hero-title-inner">
+						<h1 class="vlt-hero-title">{{ heading }}</h1>
+						<p class="vlt-hero-subtitle">{{ subheading }}</p>
+					</div>
+                {% endif %}
+				</div>
+
+
+    <!-- /.vlt-hero-title-holder -->
+				<main class="vlt-main-holder vlt-main-padding">
+					<div class="container">
+						<div class="vlt-portfolio-grid-filters">
+							<div data-filter="*" class="cbp-filter-item cbp-filter-item-active"><span>Все</span></div>
+                            {% for i in Show_Category %}
+                                <div data-filter=".portfolio_category-{{ i.slug }}" class="cbp-filter-item"><span>{{ i.title }}</span></div>
+                            {% endfor %}
+						</div>
+						<div class="vlt-portfolio-grid cubeportfolio" id="cubeportfolio">
+                            {% for i in shooting %}
+                                <article class="cbp-item vlt-portfolio-grid-item vlt-portfolio-style2 portfolio_category-{{ i.category.slug }}">
+								    <div class="vlt-portfolio-grid-image">
+									    <a class="vlt-portfolio-grid-link" href="{{ i.get_absolute_url }}">
+									        <img src="{{ i.miniature.url }}" {% if i.subtitle %}alt="{{ i.subtitle }}"{% endif %}>
+									    </a>
+								    </div>
+								    <div class="vlt-portfolio-grid-content">
+                                        <h5 class="vlt-portfolio-grid-title">{{ i.title }}</h5>
+                                        {% if i.subtitle %}
+                                            <p class="vlt-portfolio-grid-cat">{{ i.subtitle }}</p>
+                                        {% endif %}
+								    </div>
+							    </article>
+                            {% endfor %}
+							<!-- /.cbp-item  -->
+						</div>
+{#						<nav class="vlt-pagination-load-more-btn" data-max-pages="1">#}
+{#							<a href="load-more-portfolio-page-1.html" class="vlt-btn vlt-btn-primary vlt-btn-ajax-load">Load More</a>#}
+{#						</nav>#}
+					</div>
+				</main>
+				<!-- /.vlt-main-holder vlt-main-padding -->
+			<!-- /.vlt-content-holder -->
+{% endblock %}

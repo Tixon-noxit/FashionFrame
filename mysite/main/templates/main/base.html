@@ -1,0 +1,164 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8">
+		<title>{{ heading }}</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="author" content="Tikhon Chabusov" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- FAVICON -->
+		<link rel="icon" type="image/png" href="{% static 'main/images/favicon.png' %}">
+		<!-- FONTS -->
+		<link rel="stylesheet" href="{% static 'main/css/font-awesome.min.css' %}">
+		<link rel="stylesheet" href="{% static 'main/css/iconsmind.css' %}">
+		<!-- STYLESHEETS -->
+		<link rel="stylesheet" href="{% static 'main/css/plugins.min.css' %}">
+		<link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+	</head>
+	<body>
+		<div class="vlt-site-holder animsition vlt-footer-fixed">
+			<div class="vlt-content-holder">
+
+
+            {% block headerinfo %}
+				<header class="vlt-header-holder vlt-header-fixed" data-header-fixed="1">
+					<div class="container">
+						<div class="vlt-header-inner">
+							<div class="vlt-header-left">
+								<a href="{% url 'main:home' %}" class="vlt-site-logo">
+								<img src="{% static 'main/images/logo1.png' %}" alt="Тишанская Жанна" style="max-height: 13px">
+								</a>
+							</div>
+							<div class="vlt-header-right">
+								<div class="vlt-menu-toggle vlt-fullscreen-menu-toggle" data-before-text="Menu">
+									<span class="line line-one"><span class="inner"></span></span>
+									<span class="line line-two"><span class="inner"></span></span>
+									<span class="line line-three"><span class="inner"></span></span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</header>
+				<!-- /.vlt-header-holder vlt-header-fixed -->
+                {% endblock %}
+
+                {% block headermenu %}
+				<div class="vlt-navigation-fullscreen-holder">
+					<div class="vlt-navigation-fullscreen">
+						<ul>
+							<li><a href="{% url 'main:home' %}">Главная</a></li>
+                            <li><a href="{% url 'main:about_me:about_me' %}">Обо мне</a></li>
+                            <li><a href="{% url 'main:blog:blog' %}">Блог</a></li>
+                            <li><a href="{% url 'main:price:price' %}">Прайс</a></li>
+							<li><a href="{% url 'main:contact:contact' %}">Контакты</a></li>
+						</ul>
+						<div class="vlt-navigation-socials">
+							<ul>
+								<li><a href="https://vk.com/tigane" target="_blank" class="tooltip" title="VK"><i class="fa fa-vk"></i></a></li>
+								<li><a href="#" target="_blank" class="tooltip" title="Pinterest"><i class="fa fa-pinterest"></i></a></li>
+								<li><a href="#" target="_blank" class="tooltip" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+								<li><a href="#" target="_blank" class="tooltip" title="Instagramm"><i class="fa fa-instagram"></i></a></li>
+							</ul>
+						</div>
+						<!-- /.vlt-navigation-socials -->
+
+					</div>
+				</div>
+				<!-- /.vlt-navigation-fullscreen-holder -->
+
+        {% endblock %}
+
+
+                {% block content %}
+                {% endblock %}
+
+                </div>
+                {% block footer %}
+                <footer class="vlt-footer-holder vlt-footer-minimal" data-footer-fixed="1">
+				<div class="vlt-footer-inner">
+					<div class="container">
+						<div class="text-center">
+							<a href="{% url 'main:home' %}" class="vlt-site-logo">
+							<img src="{% static 'main/images/logo1.png' %}" alt="Vinero" style="max-height: 13px">
+							</a>
+							<div class="vlt-footer-menu">
+								<div>
+									<ul>
+										<li>
+											<a href="{% url 'main:home' %}">Главная</a>
+										</li>
+										<li>
+											<a href="{% url 'main:about_me:about_me' %}">Обо мне</a>
+										</li>
+										<li>
+											<a href="{% url 'main:contact:contact' %}">Контакты</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="vlt-footer-copyright">
+								<p>2023</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</footer>
+			<!-- /.vlt-footer-holder -->
+        {% endblock %}
+		</div>
+		<!-- /.vlt-site-holder -->
+		<a href="#" class="vlt-back-to-top hidden"><i class="fa fa-angle-up"></i></a>
+		<!-- /.vlt-back-to-top -->
+</body>
+	<!-- SCRIPTS -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+	<script type="text/javascript">
+		jQuery.noConflict()(function($){
+			$('#collage .vlt-collage-inner').collagePlus({
+				'allowPartialLastRow': false,
+				'direction': 'vertical',
+				'targetHeight': 340,
+			});
+		});
+	</script>
+    <script src="{% static 'main/js/jquery.min.js' %}"></script>
+    <script src="{% static 'main/js/plugins.min.js' %}"></script>
+	<script type="text/javascript">
+		jQuery.noConflict()(function($){
+			var gridContainer = $('#cubeportfolio');
+			gridContainer.imagesLoaded(function(){
+				gridContainer.cubeportfolio({
+					defaultFilter: '*',
+					filters: '.vlt-portfolio-grid-filters',
+					animationType: 'fadeOut',
+					layoutMode: 'grid', //mosaic
+						sortToPreventGaps: true,
+					gapHorizontal: 30,
+					gapVertical: 30,
+					gridAdjustment: 'responsive',
+					mediaQueries:
+					[{
+						width: 1170,
+						cols: 3,
+					}, {
+						width: 991,
+						cols: 3,
+					}, {
+						width: 767,
+						cols: 2,
+					}, {
+						width: 575,
+						cols: 1,
+					}],
+					displayType: 'default',
+					displayTypeSpeed: 150,
+				});
+			});
+		});
+	</script>
+    <script src="{% static 'main/js/script.js' %}"></script>
+
+
+
+</html>

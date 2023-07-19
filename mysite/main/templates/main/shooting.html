@@ -1,0 +1,79 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+
+{% block content %}
+    <main class="vlt-main-holder">
+        <section class="vlt-main-padding">
+            <div class="container">
+                <div class="vlt-collage-list gutter" id="collage">
+                    <div class="vlt-collage-inner clearfix">
+                        {% for i in  Show_Photo %}
+                        <div class="vlt-collage-image" style="max-width: 300px; max-height: 45%; margin: 30px 30px 30px 30px; display: inline-block; vertical-align: bottom; overflow: hidden; opacity: 1;">
+
+                                <a class="vlt-collage-link lightbox-link" href="{{ i.image.url }}" data-rel="lightcase:gallery"></a>
+                                <img src="{{ i.image.url }}" alt>
+
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <!-- /.vlt-collage-list gutter -->
+            </div>
+        </section>
+        <!-- /.vlt-main-padding -->
+        <section class="vlt-main-padding-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <table class="vlt-project-meta">
+                            <tbody>
+                            {% if shooting.model %}
+                            <tr class="vlt-project-meta-row">
+                                <td class="vlt-project-meta-title">Model</td>
+                                <td class="vlt-project-meta-text">{{ shooting.model }}</td>
+                            </tr>
+                            {% endif %}
+                            <tr class="vlt-project-meta-row">
+                                <td class="vlt-project-meta-title">Date</td>
+                                <td class="vlt-project-meta-text">{{ shooting.time_create|date:"j b Y" }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <!-- /.vlt-project-meta -->
+                    </div>
+                    <div class="col-md-8">
+                        <div class="vlt-custom-title-holder">
+                            <h3 class="vlt-custom-title">{{ shooting.title }}</h3>
+                            {% if shooting.subtitle %}
+                                <span class="vlt-custom-subtitle">{{ shooting.subtitle }}</span>
+                            {% endif %}
+                        </div>
+                        <!-- /.vlt-custom-title-holder -->
+                        {% if shooting.description %}
+                            <p>{{ shooting.description }}</p>
+{#								<p>Vim suas facilis complectitur ei. Vis cu congue sententiae, quo melius appetere eu, cum labores torquatos ex. Cum ea porro iisque epicuri, quo modo illum et. Ut discere dolores consulatu vim, no sit congue diceret impedit, ne sumo falli salutandi mei</p>#}
+                        {% endif %}
+                        <div class="vlt-post-share" id="vlthemes_el_599c40759c02c"><a class="twitter" target="_blank" href="#"><i class="fa fa-twitter"></i></a><a class="facebook" target="_blank" href="#"><i class="fa fa-facebook"></i></a><a class="linkedin" target="_blank" href="#"><i class="fa fa-linkedin"></i></a><a class="pinterest" target="_blank" href="#"><i class="fa fa-pinterest"></i></a><a class="google_plus" target="_blank" href="#"><i class="fa fa-google-plus"></i></a></div>
+                        <!-- /.vlt-post-share -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- /.vlt-main-padding-bottom -->
+        <nav class="vlt-portfolio-navigation">
+            <div class="container">
+                <div class="vlt-portfolio-navigation-inner">
+                    <div class="prev-post">
+                        <a href="{{ get_previous_by_All_Photo.url }}"><i class="fa fa-angle-left"></i>Previous Project</a>
+                    </div>
+                    <div class="next-post"><a href="{{ All_Photo.get_previous_by_time_create.url }}">Next Project<i class="fa fa-angle-right"></i></a></div>
+                </div>
+            </div>
+        </nav>
+        <!-- /.vlt-portfolio-navigation -->
+    </main>
+
+
+
+{% endblock %}

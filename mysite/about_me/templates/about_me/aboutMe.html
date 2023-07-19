@@ -1,0 +1,41 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block content %}
+<!-- /.vlt-navigation-fullscreen-holder -->
+{% for a in Show_About %}
+				<div class="vlt-hero-title-holder jarallax" style="background-image: url('{{ backgroung_photo.miniature.url }}');">
+					<div class="vlt-hero-title-inner">
+                        {% if a.title %}
+						<h1 class="vlt-hero-title">{{ a.title}}</h1>
+                        {% endif %}
+                        {% if a.description %}
+						<p class="vlt-hero-subtitle">{{ a.description }}</p>
+                        {% endif %}
+					</div>
+				</div>
+				<!-- /.vlt-hero-title-holder -->
+				<main class="vlt-main-holder vlt-main-padding">
+					<section>
+						<div class="container">
+							<div class="row">
+								<div class="col-md-1"></div>
+                                {% if a.left_column %}
+								<div class="col-md-5">
+									<p class="text-justify">
+										{{ a.left_column }}
+									</p>
+								</div>
+                                {% endif %}
+                                {% if a.right_column %}
+								<div class="col-md-5">
+									<p class="text-justify">
+										{{ a.right_column }}
+									</p>
+								</div>
+                                {% endif %}
+							</div>
+						</div>
+					</section>
+				</main>
+   {% endfor %}
+{% endblock %}

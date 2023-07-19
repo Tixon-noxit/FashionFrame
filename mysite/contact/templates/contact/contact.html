@@ -1,0 +1,68 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block content %}
+<!-- /.vlt-navigation-fullscreen-holder -->
+{% for c in Show_Contact %}
+				<div class="vlt-hero-title-holder jarallax" style="background-image: url('{{ backgroung_photo.miniature.url }}');">
+					<div class="vlt-hero-title-inner">
+                            {% if c.title %}
+						        <h1 class="vlt-hero-title">{{ c.title }}</h1>
+                            {% endif %}
+                            {% if c.description %}
+						        <p class="vlt-hero-subtitle">{{ c.description }}</p>
+                            {% endif %}
+
+					</div>
+				</div>
+    <!-- /.vlt-hero-title-holder -->
+
+<main class="vlt-main-holder vlt-main-padding">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-1"></div>
+							<div class="col-md-5">
+								<div class="mb30">
+                                    {% if c.brief_information %}
+									<h5 class="uppercase mb10">Информация</h5>
+									<p>{{ c.brief_information }}</p>
+                                    {% endif %}
+									<dl>
+                                        {% if c.email %}
+										<dt>Email</dt>
+										<dd><a href="mailto:vinero@example.com">{{ c.email }}</a></dd>
+                                        {% endif %}
+                                        {% if c.phone %}
+										<dt>Телефон</dt>
+										<dd>{{ c.phone }}</dd>
+                                        {% endif %}
+                                        {% if c.adress %}
+										<dt>Адрес</dt>
+										<dd>{{ c.adress }}</dd>
+                                        {% endif %}
+									</dl>
+                                    {% if c.instagramm_link %}
+									<a class="vlt-single-icon" href="{{ c.instagramm_link }}" target="_self"><i class="fa fa-instagram"></i></a>
+                                    {% endif %}
+                                    {% if c.Vk_link %}
+									<a class="vlt-single-icon" href="{{ c.Vk_link }}" target="_self"><i class="fa fa-behance"></i></a>
+                                    {% endif %}
+                                    {% if c.facebook_link %}
+									<a class="vlt-single-icon" href="{{ c.facebook_link }}" target="_self"><i class="fa fa-facebook"></i></a>
+                                    {% endif %}
+                                    {% if c.twitter_link %}
+									<a class="vlt-single-icon" href="#" target="_self"><i class="fa fa-twitter"></i></a>
+                                    {% endif %}
+								</div>
+							</div>
+						</div>
+                    {% for c in Show_Alert %}
+                    <div class="vlt-alert">
+                        {% autoescape off %}
+						{{ c.description }}
+                        {% endautoescape %}
+					</div>
+                    {% endfor %}
+					</div>
+				</main>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+
+{% block content %}
+<!-- /.vlt-navigation-fullscreen-holder -->
+    {% for s in Show_Article %}
+				<div class="vlt-hero-title-holder jarallax" style="background-image: url('{{ s.miniature.url }}');">
+					<div class="vlt-hero-title-inner">
+						<h1 class="vlt-hero-title">{{ s.title }}</h1>
+						<div class="vlt-hero-meta">
+							<div class="vlt-post-meta">
+{#								<span class="vlt-post-author"><i class="fa fa-fw fa-user"></i><a href="#">VLThemes</a></span>#}
+								<span class="vlt-post-date"><i class="fa fa-fw fa-clock-o"></i>{{ s.time_create|date:"j b Y" }}</span>
+{#								<span class="vlt-post-comments"><i class="fa fa-fw fa-comment-o"></i><a class="no-anims" href="#comments">2 Комментария</a></span>#}
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- /.vlt-hero-title-holder -->
+				<main class="vlt-main-holder vlt-main-padding">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-1"></div>
+							<div class="col-md-10">
+								<div class="vlt-post-content vlt-post-single">
+                                    {% autoescape off %}
+                                    <p>{{ s.description }}</p>
+                                    {% endautoescape %}
+									<div class="vlt-post-footer">
+										<div class="vlt-post-share">
+											<a class="twitter" target="_blank" href="#"><i class="fa fa-fw fa-twitter"></i></a>
+											<a class="facebook" target="_blank" href="#"><i class="fa fa-fw fa-facebook"></i></a>
+											<a class="linkedin" target="_blank" href="#"><i class="fa fa-fw fa-linkedin"></i></a>
+											<a class="pinterest" target="_blank" href="#"><i class="fa fa-fw fa-pinterest"></i></a>
+										</div>
+										<div class="vlt-post-tags">
+											<a href="#" rel="tag">Architect</a>
+											<a href="#" rel="tag">Design</a>
+											<a href="#" rel="tag">News</a>
+										</div>
+									</div>
+									<!-- /.vlt-post-footer -->
+								</div>
+								<!-- /.vlt-post-content vlt-post-single -->
+								<hr>
+							</div>
+						</div>
+					</div>
+				</main>
+    {% endfor %}
+				<!-- /.vlt-main-holder vlt-main-padding -->
+{% endblock %}

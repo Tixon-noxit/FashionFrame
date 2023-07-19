@@ -1,0 +1,121 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block content %}
+    <!-- /.vlt-navigation-fullscreen-holder -->
+				<div class="vlt-hero-title-holder jarallax" style="background-image: url('{{ backgroung_photo.miniature.url }}');">
+					<div class="vlt-hero-title-inner">
+						<h1 class="vlt-hero-title">{{ heading }}</h1>
+						<p class="vlt-hero-subtitle">{{ subheading }}</p>
+					</div>
+				</div>
+				<!-- /.vlt-hero-title-holder -->
+				<main class="vlt-main-holder vlt-main-padding">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-9">
+								<div class="vlt-postlist-holder">
+									<div class="vlt-postlist vlt-postlist-standard cubeportfolio clearfix">
+                                    {% for b in blog  %}
+										<article class="vlt-post-standard cbp-item">
+											<div class="vlt-post-inner">
+												<div class="vlt-post-thumbnail">
+													<a href="{{ b.get_absolute_url }}">
+													<img src="{{ b.miniature.url }}" alt>
+													</a>
+												</div>
+												<div class="vlt-post-content">
+													<div class="vlt-post-meta">
+														<span class="vlt-post-cats"><i class="fa fa-fw fa-folder"></i><a href="{% url 'main:blog:selected_category' category_slug=b.category.slug %}">{{ b.category }}</a></span>
+														<span class="vlt-post-date"><i class="fa fa-fw fa-clock-o"></i>{{ b.time_create|date:"j b Y" }}</span>
+													</div>
+													<h3 class="vlt-post-title"><a href="{{ b.get_absolute_url }}">{{ b.title }}</a></h3>
+													<div class="vlt-post-excerpt">
+														{{ b.short_description }}
+													</div>
+													<div class="vlt-post-footer">
+														<a href="{{ b.get_absolute_url }}" class="vlt-btn vlt-btn-primary">Читать</a>
+													</div>
+												</div>
+											</div>
+										</article>
+                                        {% endfor %}
+										<!-- /.vlt-post-standard -->
+									</div>
+									<!--/.vlt-postlist .vlt-postlist-standard .cubeportfolio .clearfix-->
+
+									<nav class="vlt-pagination-buttons">
+										<ul>
+                                            {% if page_obj.has_previous %}
+											<li class="prev-page">
+												<a href="?page={{ page_obj.paginator.num_pages }}"><i class="fa fa-fw fa-angle-left"></i><span>Prev</span></a>
+											</li>
+                                            {% endif %}
+                                            {% if page_obj.has_next %}
+											<li class="next-page inactive">
+                                                <a href="?page={{ page_obj.next_page_number }}"><i class="fa fa-fw fa-angle-right"></i><span>Next</span></a>
+                                            </li>
+                                            {% endif %}
+										</ul>
+									</nav>
+
+									<!-- /.vlt-pagination-buttons -->
+								</div>
+							</div>
+							<div class="col-md-3 hidden-sm-down">
+								<div class="vlt-sidebar">
+									<div class="vlt-widget widget_search">
+
+
+										<form action="{% url 'main:blog:search_article' %}" method="get" class="vlt-search-form">
+											<div class="vlt-form-group">
+												<input type="text" id="s" name="search" class="vlt-form-control" placeholder="Найти">
+											</div>
+										</form>
+
+
+									</div>
+									<!-- /.vlt-widget widget_search -->
+									<div class="vlt-widget widget_recent_entries">
+										<h5 class="vlt-widget-title">Свежие записи</h5>
+										<ul>
+                                            {% for s in Article_All %}
+											<li>
+												<a href="{{ s.get_absolute_url }}">{{ s.title }}</a>
+												<span class="post-date">{{ s.time_create|date:"j b Y"  }}</span>
+											</li>
+                                            {% endfor %}
+										</ul>
+									</div>
+
+
+									<!-- /.vlt-widget widget_recent_entries -->
+									<div class="vlt-widget widget_categories">
+										<h5 class="vlt-widget-title">Категории</h5>
+										<ul>
+                                            {% for k in Category_Article %}
+											<li>
+												<a href="{% url 'main:blog:selected_category' category_slug=k.slug %}">{{ k.title }}</a>({{ k.article_set.count }})
+											</li>
+                                            {% endfor %}
+										</ul>
+									</div>
+									<!-- /.vlt-widget widget_categories -->
+{#									<div class="vlt-widget vinero_widget_subscribe">#}
+{#										<h5 class="vlt-widget-title">Новости</h5>#}
+{#										<form method="post" action="http://eepurl.com/cAIc41">#}
+{#											<p>Подписывайтесь, чтобы не пропустить последние новости.</p>#}
+{#											<div class="vlt-form-group">#}
+{#												<input type="email" name="EMAIL">#}
+{#											</div>#}
+{#											<button type="submit" class="vlt-btn vlt-btn-primary block">Подписаться</button>#}
+{#										</form>#}
+{#									</div>#}
+									<!-- /.vlt-widget vinero_widget_subscribe -->
+								</div>
+								<!-- /.vlt-sidebar -->
+							</div>
+						</div>
+					</div>
+				</main>
+				<!-- /.vlt-main-holder vlt-main-padding -->
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block content %}
+				<!-- /.vlt-navigation-fullscreen-holder -->
+				<div class="vlt-hero-title-holder jarallax" style="background-image: url('{% static 'main/images/index.jpg' %}');">
+					<div class="vlt-hero-title-inner">
+						<h1 class="vlt-hero-title">Error 404</h1>
+						<p class="vlt-hero-subtitle">Страница не найдена</p>
+					</div>
+				</div>
+				<!-- /.vlt-hero-title-holder -->
+				<main class="vlt-main-holder vlt-main-padding">
+					<div class="container">
+						<div class="vlt-content-empty">
+							<p>Страницу которую вы искали найти не удалось.</p>
+							<a class="vlt-btn vlt-btn-primary" href="index.html">Главная страница</a>
+						</div>
+					</div>
+				</main>
+				<!-- /.vlt-main-holder vlt-main-padding -->
+{% endblock %}
